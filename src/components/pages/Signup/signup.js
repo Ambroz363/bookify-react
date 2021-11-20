@@ -2,7 +2,7 @@ import './signup.css'
 import React ,{useState} from 'react';
 
 
-import {tryAuth} from '../../../redux/actions/index';
+import {setAuth} from '../../../redux/actions/index';
 import axios from 'axios';
 
 function Signup() {
@@ -28,7 +28,7 @@ function Signup() {
     axios
     .post('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/signup' , user)
     .then((res) => {
-      tryAuth(res.data)
+      setAuth(res.data)
       
     })
     .catch((error)=>{

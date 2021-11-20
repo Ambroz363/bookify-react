@@ -8,14 +8,18 @@ import Usermenu from '../Menu/userMenu/usermenu';
 
 
 function Navbar() {
-
-    const isLogged = useSelector(state => state.isLogged);
-    const isMenu = useSelector( state => state.isMenu );
+    //Global States
+    const isLogged = useSelector( state  => state.isLogged);
     const userState = useSelector( state => state.userState); 
 
+    //Local States
     const [search, setSearch] = useState('');
+    const [menuActive , setMenuActivity] = useState(false);
     
-    
+    //Handling the Menu Toggling
+    function handleMenu() {
+        setMenuActivity(!menuActive);
+    }
 
     return (
         <div className="navbar">
@@ -37,7 +41,7 @@ function Navbar() {
                {isLogged 
                ? 
                 <div className="user">  
-                    <MenuButton />
+                    <MenuButton toggleMenu={handleMenu}/>
                 </div>
                : 
                <div className="user">
@@ -47,9 +51,9 @@ function Navbar() {
                }
             </div> 
             </header>
-            <div className={isMenu?"side-menu active":"side-menu"}>
+            <div className={menuActive?"side-menu active":"side-menu"}>
                <div className="Usermenu">
-               {userState.authenticated ?  <Usermenu /> : null } 
+               {userState.authenticated ?  <Usermenu/> : null } 
                </div>
                
 

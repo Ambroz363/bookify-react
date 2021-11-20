@@ -2,7 +2,7 @@ const initialState = {
     authenticated : false
 };
 
-const userState = (state = initialState , action) => {
+const userStateReducer = (state = initialState , action) => {
     switch(action.type){
         case 'SET_USER':
             return  {
@@ -14,4 +14,4 @@ const userState = (state = initialState , action) => {
     }
 };
 
-export default userState;
+export default userStateReducer;

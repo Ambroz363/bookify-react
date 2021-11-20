@@ -3,7 +3,7 @@ import './login.css';
 import React ,{useState} from 'react';
 import axios from 'axios';
 
-import {tryAuth} from '../../../redux/actions'
+import {setAuth} from '../../../redux/actions'
 
 
 function Login() {
@@ -19,13 +19,13 @@ function Login() {
   
 
   // Posting Login
-  const login = (e) => {
+  async function login(e) {
     e.preventDefault();
 
-    axios
+    await axios
     .post('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/login' , user)
     .then( (res) => {
-      tryAuth(res.data)
+      setAuth(res.data)
     })
     .catch((error)=>{
       alert(error)

@@ -2,7 +2,7 @@ import './usermenu.css';
 import {Link}from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
-const Usermenu = () => {
+export default function Usermenu() {
 
     const userState = useSelector(state => state.userState);
     
@@ -28,4 +28,3 @@ const Usermenu = () => {
 
 }
 
-export default Usermenu ;

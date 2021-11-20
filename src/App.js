@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import { BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import jwtDecode from "jwt-decode";
 import axios from 'axios';
@@ -20,40 +20,42 @@ import {useSelector} from 'react-redux';
 import {login , logout } from './redux/actions';
 import store from './redux/store';
 
+function getUserData() {
+  axios
+  .get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/user')
+  .then((res) => {
+      store.dispatch({
+        type: "SET_USER",
+        payload: res.data,
+      });
+  })
 
-function App() {
+}
+
+export default function App() {
   
   const isLogged = useSelector(state => state.isLogged);
-
-  
-
   const token = localStorage.getItem("FBIdToken");
 
-  const getUserData = () => {
-    axios
-    .get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/user')
-    .then((res) => {
-        store.dispatch({
-          type: "SET_USER",
-          payload: res.data,
-        });
-    })
-    
-}
+  // Check Whether User is Authenticated
+  useEffect(() => {
+    checkAuth();
+  });
   
-
-  if (token) {
-    const decodedToken = jwtDecode(token);
-    if (decodedToken.exp * 1000 < Date.now()) {
-      store.dispatch(logout());
-    } else {
-      store.dispatch(login());
-      axios.defaults.headers.common["Authorization"] = token;
-      getUserData();
+  function checkAuth() {
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.exp * 1000 < Date.now()) {
+        store.dispatch(logout());
+      } else {
+        store.dispatch(login());
+        axios.defaults.headers.common["Authorization"] = token;
+        getUserData();
+      }
     }
   }
-
-
+  
+  
   return (
     <div className="App">
       <Router>
@@ -76,4 +78,4 @@ function App() {
 
 }
 
-export default App 
+ 

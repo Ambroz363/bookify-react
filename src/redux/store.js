@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import loggedReducer from './reducers/isLogged';
-import menuReducer from './reducers/isMenu';
-import userState from './reducers/userState';
-import bookid from './reducers/bookid';
-import isAddrev from './reducers/isAddrev'
-import addIamge from './reducers/addIamge'
+
+//Reducers
+import isLoggedReducer from './reducers/isLogged';
+import userStateReducer from './reducers/userState';
+import bookidReducer from './reducers/bookid';
+
 
 
 const initialState = {}; 
@@ -13,12 +13,10 @@ const initialState = {};
 const middleware = [thunk];
 
 const reducers = combineReducers({
-    isLogged : loggedReducer,
-    isMenu : menuReducer,
-	userState : userState , 
-	bookid : bookid ,
-	isAddrev : isAddrev,
-	addImage : addIamge,
+    isLogged : isLoggedReducer,
+	userState : userStateReducer , 
+	bookid : bookidReducer ,
+	
 });
 
 

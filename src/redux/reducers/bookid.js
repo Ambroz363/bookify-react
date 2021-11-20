@@ -1,4 +1,4 @@
-const bookid = (state = "payload failed" , action) => {
+const bookidReducer = (state = "payload failed" , action) => {
     switch(action.type){
         case 'SET_BOOKID':
             return   {
@@ -12,4 +12,4 @@ const bookid = (state = "payload failed" , action) => {
 
 };
 
-export default bookid;
+export default bookidReducer;

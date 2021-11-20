@@ -1,7 +1,9 @@
 import store from '../store'
 import axios from 'axios'
 
-export const login = () => {
+export const login = (FBIdToken) => {
+    //Set Header
+    axios.defaults.headers.common["Authorization"] = FBIdToken;
     return {
         type : 'LOG_IN'
     }
@@ -9,29 +11,27 @@ export const login = () => {
 };
 
 export const logout =() => {
+    //Remove Header
+    axios.defaults.headers.common["Authorization"] = "";
     return {
         type : 'LOG_OUT'
     };
 };
 
-export const menuaction = () => {
-    return {
-        type : 'MENU'
-    } ; 
-} ;
+// export const menuaction = () => {
+//     return {
+//         type : 'MENU'
+//     } ; 
+// } ;
 
-export const tryAuth = (res) => {
 
-    setAuthid(res.token);
-    store.dispatch(login());
-
-};
-
-export const setAuthid = (token) => {
-
-    const FBIdToken = `Bearer ${token}`;
+export const setAuth = (res) => {
+    //Set token
+    const FBIdToken = `Bearer ${res.token}`;
     localStorage.setItem("FBIdToken", FBIdToken);
-    axios.defaults.headers.common["Authorization"] = FBIdToken;
+    
+    //Set LOG State
+    store.dispatch(login());
 }
 
 

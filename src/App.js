@@ -12,7 +12,7 @@ import Login from './components/pages/Login/login';
 import Signup from './components/pages/Signup/signup';
 import Footer from './components/fixed/Footer/footer';
 import Bookpage from './components/pages/Bookpage/bookpage';
-import Bookadd from './components/Addbook/Bookadd';
+import Addbook from './components/pages/Addbook/addbook';
 import SearchResult from './components/pages/SearchResult/searchresult';
 
 // Redux
@@ -66,7 +66,7 @@ export default function App() {
               <Route path="/login" component={isLogged ? Home : Login} />
               <Route path="/signup" component={isLogged ? Home : Signup}/>
               <Route path="/book" component ={isLogged ? Bookpage : Login} />
-              <Route path="/addbook" component ={isLogged ? Bookadd : Home} />
+              <Route path="/addbook" component ={isLogged ? Addbook : Home} />
               <Route path="/search" component = {SearchResult} />
               
               </Switch>

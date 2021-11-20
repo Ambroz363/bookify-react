@@ -6,14 +6,14 @@ import axios from 'axios';
 import './App.css';
 
 // Pages
-import Navbar from'./components/Navbar/navbar';
-import Home from './components/Home/home';
-import Login from './components/Login/login';
-import Signup from './components/Signup/signup';
-import Footer from './components/Footer/footer';
-import Bookpage from './components/Bookpage/bookpage';
+import Navbar from'./components/fixed/Navbar/navbar';
+import Home from './components/pages/Home/home';
+import Login from './components/pages/Login/login';
+import Signup from './components/pages/Signup/signup';
+import Footer from './components/fixed/Footer/footer';
+import Bookpage from './components/pages/Bookpage/bookpage';
 import Bookadd from './components/Addbook/Bookadd';
-import SearchResult from './components/SearchResult/searchresult'
+import SearchResult from './components/pages/SearchResult/searchresult';
 
 // Redux
 import {useSelector} from 'react-redux';
@@ -58,7 +58,8 @@ function App() {
     <div className="App">
       <Router>
         <Navbar  />
-            <Switch>
+            {<div className="workArea">
+              <Switch>
               <Route path="/" exact component={isLogged ? Home : Login} />
               <Route path="/login" component={isLogged ? Home : Login} />
               <Route path="/signup" component={isLogged ? Home : Signup}/>
@@ -66,9 +67,10 @@ function App() {
               <Route path="/addbook" component ={isLogged ? Bookadd : Home} />
               <Route path="/search" component = {SearchResult} />
               
-            </Switch>
+              </Switch>
+            </div>}
         <Footer />    
-  </Router>
+      </Router>
     </div>
   )
 

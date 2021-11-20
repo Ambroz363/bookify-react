@@ -3,7 +3,7 @@ import './login.css';
 import React ,{useState} from 'react';
 import axios from 'axios';
 
-import {tryAuth} from '../../redux/actions'
+import {tryAuth} from '../../../redux/actions'
 
 
 function Login() {
@@ -19,16 +19,8 @@ function Login() {
   
 
   // Posting Login
-  const log = (e) => {
+  const login = (e) => {
     e.preventDefault();
-
-    // fetch('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/login', {
-    //   method: 'POST',
-    //   body: JSON.stringify(user),
-    //   headers: {
-    //     'Content-type': 'application/json; charset=UTF-8',
-    //   },
-    // })
 
     axios
     .post('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/login' , user)
@@ -38,52 +30,10 @@ function Login() {
     .catch((error)=>{
       alert(error)
     })
-
-
-    // .then((res) =>{
-    //   if (res.ok){
-    //     return res.json();
-    //   }else{
-    //     console.log(res);
-    //     throw new Error('Wrong Credentials');
-    //   }
-    // })
-    // .then((res) => { 
-      
-    //   console.log(res)
-
-    //   if(flag===0) {
-    //     tryAuth(res)
-    //   }
-     
-    // })
-    // .catch((error)=>{
-    //   alert(error)
-    //   flag = 1 ;
-    // }) 
-  
-  // Trying to Login
-    // function tryAuth(res) {
-      
-    //     setAuthid(res.token);
-    //     store.dispatch(login());
-        
-    // }
-    // function setAuthid(token) {
-    //   const FBIdToken = `Bearer ${token}`;
-	  //   localStorage.setItem("FBIdToken", FBIdToken);
-    // }  
-  };
+  }
   
   return (
     <div className="login">
-
-        <div className="art">
-               <div>
-                 
-               </div>
-        </div>
-
         <div className="form">
           <div>
               <div className="form_elements">
@@ -100,7 +50,7 @@ function Login() {
                 <input type="password" placeholder="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
               </div>
               <div className="form_elements">
-                <button onClick={(e)=> {log(e)} } >Login</button>
+                <button onClick={(e) => login(e)} >Login</button>
               </div>
           </div>
         </div>

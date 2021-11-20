@@ -1,6 +1,6 @@
 import './menubutton.css';
-import {menuaction} from '../../redux/actions'
-import store from '../../redux/store'
+import {menuaction} from '../../../../redux/actions'
+import store from '../../../../redux/store'
 
 
 export default function MenuButton() {

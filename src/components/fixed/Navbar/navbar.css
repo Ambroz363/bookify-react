@@ -4,6 +4,14 @@
     font-family: monospace;
 }
 
+.navbar {
+
+        position: fixed;
+        left: 0;
+        top: 0;
+        
+}
+
 .navbar header {
     border: grey 1px solid;
     display: grid;
@@ -40,6 +48,7 @@
 
 }
 .navbar a{
+    color: black;
     text-decoration: none;
 }
 

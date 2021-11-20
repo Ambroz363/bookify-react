@@ -3,8 +3,8 @@ import {Link}from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 import './navbar.css'
-import MenuButton from '../Menu/menubutton';
-import Usermenu from '../UserMenu/usermenu';
+import MenuButton from '../Menu/menuButton/menubutton';
+import Usermenu from '../Menu/userMenu/usermenu';
 
 
 function Navbar() {

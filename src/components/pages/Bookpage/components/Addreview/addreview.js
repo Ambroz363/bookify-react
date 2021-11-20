@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React ,{ useState} from 'react';
 import {useSelector} from 'react-redux';
-import store from '../../redux/store';
+import store from '../../../../../redux/store';
 import './addreview.css';
 import {Link}from 'react-router-dom';
 
-function AddReviews() {
+export default function AddReviews(props) {
 
         const [body , setbody] = useState('');
         const userState = useSelector(state => state.userState);
@@ -57,7 +57,7 @@ function AddReviews() {
                  {/* <Link to='/book'  onClick = {() => {setBookid(bookid)} } > */}
                  <button className="submit" onClick= {()=>{addrev()}} >Review!!</button>
                     {/* </Link> */}
-                 <button className="close" onClick = {() => store.dispatch({ type : 'IS_ADD'})}><i class="far fa-window-close"></i></button>
+                 <button className="close" onClick = {() => props.unMountMe()}><i class="far fa-window-close"></i></button>
             </div>
         
         );
@@ -66,4 +66,3 @@ function AddReviews() {
 
 
 
-export default AddReviews;

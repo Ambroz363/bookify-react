@@ -2,16 +2,6 @@ import store from '../store'
 import axios from 'axios'
 
 export const login = () => {
-    // axios
-    // .get("/user")
-    // .then((res) => {
-    //     console.log(res)
-    //     return {
-    //         type : 'LOG_IN'
-            
-    //     } ;
-    // })
-    // .catch((error)=> console.log(error))
     return {
         type : 'LOG_IN'
     }

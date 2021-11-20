@@ -2,7 +2,7 @@ import React, {useState , useEffect} from 'react';
 import {Link}from 'react-router-dom';
 import './home.css';
 import axios from 'axios';
-import store from '../../redux/store';
+import store from '../../../redux/store';
 
 
 function Home() {
@@ -19,14 +19,13 @@ function Home() {
         const books = res.data;
         setItems(books);
     })
-
   }
 
-  const setBookid = (passId) => {
-      localStorage.setItem("bookId", passId);
+  function setBookid(bookID){
+      localStorage.setItem("bookId", bookID);
       store.dispatch({
       type: "SET_BOOKID" ,
-      payload: passId ,
+      payload: bookID ,
     });
   }
 
@@ -35,7 +34,7 @@ function Home() {
     <div>
       <div className="Home">
         {books.map(books =>(
-          <Link to='/book'  onClick = {() => {setBookid(books.isbnNumber)} }>
+          <Link to='/book'  onClick = {() => setBookid(books.isbnNumber) }>
             <div key={books.isbnNumber} className="bookcard"> 
               <div className="cover"><img src={books.coverImage} alt="bookcover" width="100px"/></div>
               <div className="Book-Name">Book-Name: {books.title}</div>

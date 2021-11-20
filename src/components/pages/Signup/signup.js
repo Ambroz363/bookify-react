@@ -2,7 +2,7 @@ import './signup.css'
 import React ,{useState} from 'react';
 
 
-import {tryAuth} from '../../redux/actions';
+import {tryAuth} from '../../../redux/actions/index';
 import axios from 'axios';
 
 function Signup() {
@@ -22,16 +22,9 @@ function Signup() {
    
 
     // Posting Signup
-  const sign = (e) => {
+  const signIn = (e) => {
     e.preventDefault();
 
-    // fetch('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/signup', {
-    //   method: 'POST',
-    //   body: JSON.stringify(user),
-    //   headers: {
-    //     'Content-type': 'application/json; charset=UTF-8',
-    //   },
-    // })
     axios
     .post('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/signup' , user)
     .then((res) => {
@@ -69,7 +62,7 @@ function Signup() {
               </div>
 
               <div className="buttonarea">
-                <button onClick={(e)=> {sign(e)} } >SIGN UP</button>
+                <button onClick={(e) => signIn(e)} >SIGN UP</button>
               </div>
                 
               

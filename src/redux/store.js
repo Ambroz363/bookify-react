@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import isLoggedReducer from './reducers/isLogged';
 import userStateReducer from './reducers/userState';
 import bookidReducer from './reducers/bookid';
-
+import searchStateReducer from "./reducers/searchState";
 
 
 const initialState = {}; 
@@ -16,7 +16,7 @@ const reducers = combineReducers({
     isLogged : isLoggedReducer,
 	userState : userStateReducer , 
 	bookid : bookidReducer ,
-	
+	searchState : searchStateReducer 	
 });
 
 
@@ -25,7 +25,7 @@ const store = createStore(
 	initialState,
 	compose(
 		applyMiddleware(...middleware),
-		// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 	)
 );
 

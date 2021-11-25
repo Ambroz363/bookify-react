@@ -18,11 +18,12 @@ export const logout =() => {
     };
 };
 
-// export const menuaction = () => {
-//     return {
-//         type : 'MENU'
-//     } ; 
-// } ;
+export const set_search_state = () => {
+
+    return {
+        type : 'SET_SEARCH'
+    }
+}
 
 
 export const setAuth = (res) => {

@@ -1,11 +1,12 @@
 import React, {useState , useEffect} from 'react';
 import axios from 'axios';
-import {useSelector} from 'react-redux';
+
 import './bookpage.css';
 import Reviews from './components/reviews';
 import AddReviews from './components/Addreview/addreview';
-import store from '../../../redux/store'
 
+//Redux
+import {useSelector} from 'react-redux';
 
 export default function Bookpage() {
 
@@ -13,8 +14,8 @@ export default function Bookpage() {
         bookdetails(); 
       },[]);
     //Fetch Book Details  
-    const bookid = localStorage.getItem("bookId");
-    const url = 'https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books/' + bookid
+    const bookid = useSelector(state => state.bookid);
+    const url = 'https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books/' + bookid.state
 
     async function bookdetails() {
         await axios

@@ -6,6 +6,9 @@ import './navbar.css'
 import MenuButton from '../Menu/menuButton/menubutton';
 import Usermenu from '../Menu/userMenu/usermenu';
 
+//Redux
+import store from '../../../redux/store';
+
 
 function Navbar() {
     //Global States
@@ -28,7 +31,7 @@ function Navbar() {
                 <input type="text" placeholder="search Books..."  value={search} onChange={(e) => {setSearch(e.target.value)}} />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
                 <Link to='/search'>
-                <button onClick = {() =>{localStorage.setItem("Search", search)} }><i className="fas fa-search"></i></button>
+                <button onClick = {() =>{ store.dispatch({ type : 'SET_SEARCH' , payload : search }) } }><i className="fas fa-search"></i></button>
                 </Link>
             </div>
                 

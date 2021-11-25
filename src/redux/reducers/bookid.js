@@ -1,4 +1,4 @@
-const bookidReducer = (state = "payload failed" , action) => {
+const bookidReducer = (state = false , action) => {
     switch(action.type){
         case 'SET_BOOKID':
             return   {

@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React ,{ useState} from 'react';
 import {useSelector} from 'react-redux';
-import store from '../../../../../redux/store';
+
 import './addreview.css';
-import {Link}from 'react-router-dom';
 
 export default function AddReviews(props) {
 
@@ -14,32 +13,19 @@ export default function AddReviews(props) {
         
         const url = 'https://asia-south1-bookify-5fa22.cloudfunctions.net/api/book/'+ bookid +'/review'; 
 
-        
-
-   
-        const send = {
+        const review = {
             body : body,
             userHandle : userState.credentials.handle , 
             userImage  : userState.credentials.imageUrl , 
         }
-       
-        const setBookid = (passId) => {
-            store.dispatch({
-            type: "SET_BOOKID" ,
-            payload: passId ,
-          });
-        }
 
-        const addrev = () => {
+        function addReview() {
             axios
-            .post(url , send)
+            .post(url , review)
             .then((res) => {
                 console.log(res);
                 setbody(" ");
-                store.dispatch({ type : 'IS_ADD'})
-                
-
-
+                props.unMountMe();
               })
               .catch((error)=>{
                 alert(error)
@@ -47,15 +33,12 @@ export default function AddReviews(props) {
             
             };
 
-        
-
-        
-
+    
         return (
             <div className="addreview">
                  <textarea  type="text" placeholder="type here..." value={body} onChange={(e) => {setbody(e.target.value)}} />
                  {/* <Link to='/book'  onClick = {() => {setBookid(bookid)} } > */}
-                 <button className="submit" onClick= {()=>{addrev()}} >Review!!</button>
+                 <button className="submit" onClick= {() => addReview()} >Review!!</button>
                     {/* </Link> */}
                  <button className="close" onClick = {() => props.unMountMe()}><i class="far fa-window-close"></i></button>
             </div>

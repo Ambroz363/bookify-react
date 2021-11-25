@@ -2,27 +2,34 @@ import React, {useState , useEffect} from 'react';
 import {Link}from 'react-router-dom';
 import './home.css';
 import axios from 'axios';
+
+
+//Redux
+import {useSelector} from 'react-redux';
 import store from '../../../redux/store';
 
 
 function Home() {
 
+  const [books , setItems] = useState([]);
+ 
+
   useEffect(()=>{
     fetchbooks(); 
   },[]);
 
-  const [books , setItems] = useState([]);
-
   async function fetchbooks() {
-    await axios.get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books')
-    .then(res => {
-        const books = res.data;
-        setItems(books);
-    })
+  
+        await axios.get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books')
+          .then(res => {
+          const books = res.data;
+          setItems(books);
+      })
+     
   }
 
   function setBookid(bookID){
-      localStorage.setItem("bookId", bookID);
+      // localStorage.setItem("bookId", bookID);
       store.dispatch({
       type: "SET_BOOKID" ,
       payload: bookID ,

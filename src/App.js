@@ -13,7 +13,7 @@ import Signup from './components/pages/Signup/signup';
 import Footer from './components/fixed/Footer/footer';
 import Bookpage from './components/pages/Bookpage/bookpage';
 import Addbook from './components/pages/Addbook/addbook';
-import SearchResult from './components/pages/SearchResult/searchresult';
+import Search from './components/pages/SearchResult/searchresult';
 
 // Redux
 import {useSelector} from 'react-redux';
@@ -35,6 +35,8 @@ function getUserData() {
 export default function App() {
   
   const isLogged = useSelector(state => state.isLogged);
+  const bookid = useSelector(state => state.bookid)
+
   const token = localStorage.getItem("FBIdToken");
 
   // Check Whether User is Authenticated
@@ -65,10 +67,9 @@ export default function App() {
               <Route path="/" exact component={isLogged ? Home : Login} />
               <Route path="/login" component={isLogged ? Home : Login} />
               <Route path="/signup" component={isLogged ? Home : Signup}/>
-              <Route path="/book" component ={isLogged ? Bookpage : Login} />
+              <Route path="/book" component ={bookid ? Bookpage : Login} />
               <Route path="/addbook" component ={isLogged ? Addbook : Home} />
-              <Route path="/search" component = {SearchResult} />
-              
+              <Route path="/search" component = {Search} />
               </Switch>
             </div>}
         <Footer />    

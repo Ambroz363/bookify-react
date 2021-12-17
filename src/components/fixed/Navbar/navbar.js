@@ -1,13 +1,11 @@
 import React ,{useState} from 'react';
-import {Link}from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 import './navbar.css'
 import MenuButton from '../Menu/menuButton/menubutton';
 import Usermenu from '../Menu/userMenu/usermenu';
-
-//Redux
-import store from '../../../redux/store';
+// import Search from '../Search/search';
 
 
 function Navbar() {
@@ -16,7 +14,6 @@ function Navbar() {
     const userState = useSelector( state => state.userState); 
 
     //Local States
-    const [search, setSearch] = useState('');
     const [menuActive , setMenuActivity] = useState(false);
     
     //Handling the Menu Toggling
@@ -26,34 +23,21 @@ function Navbar() {
 
     return (
         <div className="navbar">
-           <header>
-            <div className="search">
-                <input type="text" placeholder="search Books..."  value={search} onChange={(e) => {setSearch(e.target.value)}} />
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-                <Link to='/search'>
-                <button onClick = {() =>{ store.dispatch({ type : 'SET_SEARCH' , payload : search }) } }><i className="fas fa-search"></i></button>
-                </Link>
-            </div>
-                
-               
-            <div className="home">
-               <Link to='/'>Bookify</Link>
+            <div className="navbar-main-logo">
+               <Link to='/'><h1>Bookify.</h1></Link>
             </div>
 
-            <div className="user">
+            <div className="navbar-user-state">
                {isLogged 
-               ? 
-                <div className="user">  
-                    <MenuButton toggleMenu={handleMenu}/>
-                </div>
+               ?   
+                <MenuButton toggleMenu={handleMenu}/>
                : 
-               <div className="user">
+               <div className="login-signup">
                     <button> <Link to='/login'>Login</Link></button>
                     <button> <Link to='/signup'>SignUp</Link></button>
                 </div> 
                }
             </div> 
-            </header>
             <div className={menuActive?"side-menu active":"side-menu"}>
                <div className="Usermenu">
                {userState.authenticated ?  <Usermenu/> : null } 

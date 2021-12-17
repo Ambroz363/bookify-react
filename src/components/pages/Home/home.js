@@ -1,32 +1,36 @@
 import React, {useState , useEffect} from 'react';
 import {Link}from 'react-router-dom';
 import './home.css';
-import axios from 'axios';
+import Search from '../../fixed/Search/search';
+import Category from '../../fixed/Category/category';
+
 
 
 //Redux
 import {useSelector} from 'react-redux';
 import store from '../../../redux/store';
+import {getAllBooks} from '../../../redux/actions';
 
 
 function Home() {
 
-  const [books , setItems] = useState([]);
- 
+  // const [books , setItems] = useState([]);
+  const books = useSelector( state => state.bookList.books );
+  console.log(books);
 
   useEffect(()=>{
-    fetchbooks(); 
+    getAllBooks(); 
   },[]);
 
-  async function fetchbooks() {
+  // async function fetchbooks() {
   
-        await axios.get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books')
-          .then(res => {
-          const books = res.data;
-          setItems(books);
-      })
-     
-  }
+  //       await axios.get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books')
+  //         .then(res => {
+  //         const books = res.data;
+  //         setItems(books);
+  //     })
+
+  // }
 
   function setBookid(bookID){
       // localStorage.setItem("bookId", bookID);
@@ -40,6 +44,8 @@ function Home() {
   return (
     <div>
       <div className="Home">
+        <Search />
+        <Category />
         {books.map(books =>(
           <Link to='/book'  onClick = {() => setBookid(books.isbnNumber) }>
             <div key={books.isbnNumber} className="bookcard"> 

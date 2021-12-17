@@ -1,0 +1,21 @@
+.search{
+    display: flex;
+
+    background-color: #f4f1de;
+    width: 200px;
+    height: 30px;
+
+    border-radius: 10px;
+}
+
+.search input{
+    padding: 2px 5px;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: unset;
+    outline: unset;
+    
+}
+

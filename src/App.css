@@ -1,15 +1,7 @@
-.App{
-    width: 100%;
-  }
-  
-  @media (max-width: 720px) {
-    .App {
-      width: 50%;
-    }
-  }
+.main-area{
+    min-height: 100vh;
+}
 
-
-  .workArea {
-   margin-top: 50px;
-
-  }
+body{
+    background-color: #442116;
+}

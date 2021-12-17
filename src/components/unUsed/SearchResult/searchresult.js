@@ -2,6 +2,7 @@ import React, {useState , useEffect} from 'react';
 import {Link}from 'react-router-dom';
 import './search.css';
 import axios from 'axios';
+import Search from '../../fixed/Search/search';
 
 
 //Redux
@@ -9,15 +10,17 @@ import {useSelector} from 'react-redux';
 import store from '../../../redux/store';
 
 
-function Home() {
+function SearchResult(props) {
 
   const [books , setItems] = useState([]);
   // const [searchState , setsearchState] = useState( useSelector(state => state.searchState) );
-  const searchState = useSelector(state => state.searchState );
+  // const searchState = useSelector(state => state.searchState );
+
+  const searchState = useSelector( state => state.searchState );
 
   useEffect(()=>{
     fetchbooks(); 
-  },[]);
+  },[searchState]);
 
   async function fetchbooks() {
     if(searchState === "") {
@@ -50,6 +53,7 @@ function Home() {
   return (
     <div>
       <div className="Home">
+        <Search />
         {books.map(books =>(
           <Link to='/book'  onClick = {() => setBookid(books.isbnNumber) }>
             <div key={books.isbnNumber} className="bookcard"> 
@@ -68,5 +72,5 @@ function Home() {
 
 }
 
-export default Home;
+export default SearchResult;
 

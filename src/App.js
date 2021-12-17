@@ -13,7 +13,7 @@ import Signup from './components/pages/Signup/signup';
 import Footer from './components/fixed/Footer/footer';
 import Bookpage from './components/pages/Bookpage/bookpage';
 import Addbook from './components/pages/Addbook/addbook';
-import Search from './components/pages/SearchResult/searchresult';
+// import Search from './components/pages/SearchResult/searchresult';
 
 // Redux
 import {useSelector} from 'react-redux';
@@ -36,6 +36,7 @@ export default function App() {
   
   const isLogged = useSelector(state => state.isLogged);
   const bookid = useSelector(state => state.bookid)
+  const searchState = useSelector(state => state.searchState );
 
   const token = localStorage.getItem("FBIdToken");
 
@@ -62,14 +63,14 @@ export default function App() {
     <div className="App">
       <Router>
         <Navbar  />
-            {<div className="workArea">
+            {<div className="main-area">
               <Switch>
-              <Route path="/" exact component={isLogged ? Home : Login} />
+              <Route path="/" exact component={Home} />
               <Route path="/login" component={isLogged ? Home : Login} />
               <Route path="/signup" component={isLogged ? Home : Signup}/>
-              <Route path="/book" component ={bookid ? Bookpage : Login} />
+              <Route path="/book" component ={bookid ? Bookpage : Home} />
               <Route path="/addbook" component ={isLogged ? Addbook : Home} />
-              <Route path="/search" component = {Search} />
+              {/* <Route path="/search" component = { () => (<Search searchState = {searchState} />) } /> */}
               </Switch>
             </div>}
         <Footer />    

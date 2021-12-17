@@ -6,6 +6,7 @@ import isLoggedReducer from './reducers/isLogged';
 import userStateReducer from './reducers/userState';
 import bookidReducer from './reducers/bookid';
 import searchStateReducer from "./reducers/searchState";
+import bookListReducer from "./reducers/booklist";
 
 
 const initialState = {}; 
@@ -16,7 +17,8 @@ const reducers = combineReducers({
     isLogged : isLoggedReducer,
 	userState : userStateReducer , 
 	bookid : bookidReducer ,
-	searchState : searchStateReducer 	
+	searchState : searchStateReducer ,
+	bookList : bookListReducer , 	
 });
 
 
@@ -25,7 +27,7 @@ const store = createStore(
 	initialState,
 	compose(
 		applyMiddleware(...middleware),
-		// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 	)
 );
 

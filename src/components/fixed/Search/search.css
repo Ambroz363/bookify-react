@@ -6,6 +6,7 @@
     height: 30px;
 
     border-radius: 10px;
+    transform: scale(1.5);
 }
 
 .search input{
@@ -17,5 +18,19 @@
     background-color: unset;
     outline: unset;
     
+}
+
+.search button {
+    cursor: pointer;
+    border: unset;
+    border-radius: 0px 10px 10px 0px ;
+    background-color: #f4f1de;
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 

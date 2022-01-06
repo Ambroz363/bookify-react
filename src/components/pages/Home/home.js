@@ -1,14 +1,15 @@
 import React, {useState , useEffect} from 'react';
-import {Link}from 'react-router-dom';
+
 import './home.css';
 import Search from '../../fixed/Search/search';
 import Category from '../../fixed/Category/category';
-
+import Loading from '../../fixed/Loading/loading';
+import BookCard from '../../bookCard/bookCard';
+import {Link}from 'react-router-dom';
 
 
 //Redux
 import {useSelector} from 'react-redux';
-import store from '../../../redux/store';
 import {getAllBooks} from '../../../redux/actions';
 
 
@@ -16,47 +17,37 @@ function Home() {
 
   // const [books , setItems] = useState([]);
   const books = useSelector( state => state.bookList.books );
-  console.log(books);
+  const isLoading = useSelector ( state => state.isLoading ) ; 
+  const isLogged = useSelector( state => state.isLogged);
+ 
 
   useEffect(()=>{
     getAllBooks(); 
   },[]);
 
-  // async function fetchbooks() {
-  
-  //       await axios.get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books')
-  //         .then(res => {
-  //         const books = res.data;
-  //         setItems(books);
-  //     })
-
-  // }
-
-  function setBookid(bookID){
-      // localStorage.setItem("bookId", bookID);
-      store.dispatch({
-      type: "SET_BOOKID" ,
-      payload: bookID ,
-    });
-  }
-
-
   return (
     <div>
-      <div className="Home">
+      <div className="home">
+
+        <div className="left-pane">
         <Search />
         <Category />
-        {books.map(books =>(
-          <Link to='/book'  onClick = {() => setBookid(books.isbnNumber) }>
-            <div key={books.isbnNumber} className="bookcard"> 
-              <div className="cover"><img src={books.coverImage} alt="bookcover" width="100px"/></div>
-              <div className="Book-Name">Book-Name: {books.title}</div>
-              <div className="Genre">Genre: {books.genre}</div>
-              <div className="Rating">Rating: {books.ratings ? Math.round((books.ratings + Number.EPSILON) * 100) / 100 : "No Ratings yet"}</div>
-              <div className="Description"> {books.description} </div>
-          </div>
-          </Link>
-        ))}
+        {isLogged ?  <Link to="/addbook"><h3>Add Book</h3></Link> : null}
+        </div>
+
+        <div className="right-pane">
+          { (isLoading)  
+          ? <Loading />
+          :<div className="book-list">
+          {books.map(book =>(
+            <BookCard book={book} /> 
+          ))}
+          </div>  
+          }
+        </div>
+        
+        
+        
       </div> 
       
     </div>

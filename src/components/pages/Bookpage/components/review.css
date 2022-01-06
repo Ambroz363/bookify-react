@@ -1,0 +1,27 @@
+.review-section{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.revcard{
+    background-color: #3f1c11;
+    width: 300px;
+    border: 1px black solid;
+    margin: 20px;
+    padding: 20px;
+}
+
+.revcard .revHeader {
+    display:flex;
+    
+    align-items: center;
+}
+.revcard .revHeader .image{
+    border-radius: 50%;
+}
+.revcard .revHeader .handle{
+    margin-left: 10px;
+}

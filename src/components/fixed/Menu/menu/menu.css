@@ -1,0 +1,27 @@
+.menu{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.menu h2{
+    margin-right: 30px;
+    color: white;
+}
+
+.signout{
+    border-radius: 20px;
+    border-color: #f4f1de;
+    background-color: #f4f1de;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 0.5s;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.signout:hover{
+    color: #f4f1de;
+    background-color: #000000;
+}

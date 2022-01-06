@@ -25,22 +25,29 @@ export const logout =() => {
 //     }
 // }
 
+export const setBookid = (bookID) => {
+    store.dispatch({
+        type: "SET_BOOKID" ,
+        payload: bookID ,
+    });
+}
 
 export const setAuth = (res) => {
     //Set token
     const FBIdToken = `Bearer ${res.token}`;
     localStorage.setItem("FBIdToken", FBIdToken);
-    
     //Set LOG State
     store.dispatch(login());
 }
 
 
 export const getAllBooks = async () => {
+        store.dispatch( {type: 'LOADING_TRUE'} );
         await axios.get('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/books')
         .then(res => {
         const books = res.data;
-        store.dispatch( {type : 'BOOK_LIST' , payload : books } )    
+        store.dispatch( {type : 'BOOK_LIST' , payload : books } );
+        store.dispatch( {type: 'LOADING_FALSE'} );    
       })
 }
 

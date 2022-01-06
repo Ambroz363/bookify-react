@@ -25,7 +25,7 @@ function Login() {
     await axios
     .post('https://asia-south1-bookify-5fa22.cloudfunctions.net/api/login' , user)
     .then( (res) => {
-      setAuth(res.data)
+      setAuth(res.data);
     })
     .catch((error)=>{
       alert(error)
@@ -33,30 +33,31 @@ function Login() {
   }
   
   return (
-    <div className="login">
-        <div className="form">
-          <div>
-              <div className="form_elements">
-                <h1>LOGIN HERE</h1>
-              </div>
-              
-             <div className="form_elements">
-                <label htmlFor="email">Email:</label><br />
-                <input  type="text" placeholder="email" value={username} onChange={(e) => {setUsername(e.target.value)}} />
-             </div>
-
-              <div className="form_elements">
-                <label htmlFor="password">Password:</label><br />
-                <input type="password" placeholder="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-              </div>
-              <div className="form_elements">
-                <button onClick={(e) => login(e)} >Login</button>
-              </div>
+          <div className="signup">
+          <div className="form">
+            
+                <div className="SIGNUP">
+                    <h1>LOGIN!!</h1>
+                </div>
+                
+                <div className="emailin">
+                    <input type="text" placeholder="email" value={username} onChange={(e) => {setUsername(e.target.value)}} />
+                </div>
+                
+                <div className="passin">
+                  <input type="password" placeholder="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/> 
+                </div>
+                
+                
+                <div className="buttonarea">
+                  <button onClick={(e) => login(e)} >LOGIN</button>
+                </div>
+                  
+                
+           
           </div>
-        </div>
-        
-    </div>
-    
+          
+      </div>
   );
 }
 

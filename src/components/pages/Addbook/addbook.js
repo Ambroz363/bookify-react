@@ -87,7 +87,7 @@ function Addbook() {
                 <input type="text" placeholder="genre" value={genre} onChange={(e) => {setgenre(e.target.value)}}/>
               </div>
 
-              <div className="box">
+              <div className="buttonarea">
                 <button onClick={(e)=> {addbook(e)} } >ADD</button>
               </div>
                 
@@ -96,6 +96,7 @@ function Addbook() {
         </div>
         
     </div>
+    
       
     );
   }

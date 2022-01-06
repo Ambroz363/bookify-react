@@ -1,136 +1,84 @@
-.view{
-    margin: 10px;
-    display: grid;
-
+.book-page-container {
+    padding: 10px;
+    color: white;
 }
 
-.view .bookcard {
-    border: black 1px solid;
-    margin: 5px 200px;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr  1fr;
-    grid-template-rows: 1fr 1fr 2fr;
-    grid-template-areas:
-      "cover Book-Name Genre Rating "
-      "cover author language link"
-      "cover Description Description Description";
-  }
-  .cover {
-       
-        margin: 10px 20px;
-        grid-area: cover; 
-    }
-  .Book-Name { 
-        padding: 5px;
-        grid-area: Book-Name; 
-    }
-  .Genre { 
-        padding: 5px;
-        grid-area: Genre; 
-    }
-  .Description { 
-        padding: 5px;
-        grid-area: Description; 
-    }
-  .Rating {
-    padding: 5px;
-    grid-area: Rating;
+.bookpage-sub-cont{
+    padding-left: 20vw;
+    padding-right: 20vw;
 }
 
-.author {
-    padding: 5px;
-    grid-area: author;
-}
-
-.link {
-    padding: 5px;
-    grid-area: link;
-}
-
-.language {
-    padding: 5px;
-    grid-area: language;
-}
-
-.Reviews {
-    display: grid;
-    margin: 10px 200px;
-    
-
-}
-
-.revcard{
-    margin: 20px 100px;
-    border: black 1px solid;
-    display: grid;
-    box-shadow: 5px 10px 8px 10px #888888;
-   
-}
-.revHeader{
-    display: flex;
-    flex-direction: row;
-    
-}
-.handle{
+.book-details{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 30px;
+    align-items: center;
 }
 
-.image img{
-    
-    padding: 10px;
-    border-radius: 50%;
-    height: 100px;
-    width : 100px;
-}
-.likes {
+.book-details-top{
+    margin-top: 50px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    padding: 40px;
-    margin: 0 0 0 auto;
-    font-size: 30px;
-}
-.likes i {
-    color: red;
-    margin-left: 10px;
-    margin-right: 10px;
-    
-}
-.likes button{
-    font-size: large;
-    border: none;
-    margin: 5px;
 }
 
-.revBody{
-    
-    padding: 20px;
-}
-
-.revBody .body{
-    text-align: center;
-    font-size: 30px;
-    font-style: italic;
+.book-details-right {
     padding: 10px;
-    background-color: rgb(211, 207, 207);
-}
-
-.Mid {
-    padding: 20px;
+    padding-left: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
+    
 }
 
-.Mid h1 {
-    font-size: 50px;
+.book-details-right-sub1{
+    display: flex;
+    justify-content: center;
 }
 
-.Mid button {
-    padding: 10px;
-    font-size: 30px;
+.book-details-right-sub2{
+    display: flex;
+    justify-content: space-around;
+}
 
+.book-page-container h4{
+    color: #f4f1de;
+    font-size: 40px;
+}
+
+.book-page-container .link{
+    border: 2px #f4f1de solid;
+}
+.book-page-container h5{
+    padding: 5px;
+    font-size: 20px;
+}
+.book-page-container .link:hover{
+    background-color: #f4f1de;
+    color: black;
+}
+.book-page-container h5:hover{
+    color: black;
+}
+
+.book-details-bottom{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    border: 2px solid rgb(196, 192, 192);
+}
+
+.Reviews-cont .tab-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    
+}
+.Reviews-cont h6{
+    
+    font-size: 20px;
 }

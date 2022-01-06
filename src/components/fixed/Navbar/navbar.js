@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 import './navbar.css'
-import MenuButton from '../Menu/menuButton/menubutton';
+import Menu from '../Menu/menu/menu';
 import Usermenu from '../Menu/userMenu/usermenu';
 // import Search from '../Search/search';
 
@@ -30,7 +30,7 @@ function Navbar() {
             <div className="navbar-user-state">
                {isLogged 
                ?   
-                <MenuButton toggleMenu={handleMenu}/>
+                <Menu />
                : 
                <div className="login-signup">
                     <button> <Link to='/login'>Login</Link></button>
@@ -38,13 +38,11 @@ function Navbar() {
                 </div> 
                }
             </div> 
-            <div className={menuActive?"side-menu active":"side-menu"}>
+            {/* <div className={menuActive?"side-menu active":"side-menu"}>
                <div className="Usermenu">
                {userState.authenticated ?  <Usermenu/> : null } 
                </div>
-               
-
-            </div> 
+            </div>  */}
         </div>
     )
 }

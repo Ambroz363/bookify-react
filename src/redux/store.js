@@ -7,6 +7,7 @@ import userStateReducer from './reducers/userState';
 import bookidReducer from './reducers/bookid';
 import searchStateReducer from "./reducers/searchState";
 import bookListReducer from "./reducers/booklist";
+import isLoadingReducer from "./reducers/isloading";
 
 
 const initialState = {}; 
@@ -18,7 +19,8 @@ const reducers = combineReducers({
 	userState : userStateReducer , 
 	bookid : bookidReducer ,
 	searchState : searchStateReducer ,
-	bookList : bookListReducer , 	
+	bookList : bookListReducer ,
+	isLoading : isLoadingReducer ,  	
 });
 
 

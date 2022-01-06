@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&display=swap');
 
 *{
+  
   font-family: 'Baloo Bhaijaan 2', cursive;
+  font-weight: 300;
   margin: 0;
   padding: 0;
 }
 
 a{
   text-decoration: none;
+  color: white;
 }
 
 body {

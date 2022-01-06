@@ -10,8 +10,8 @@ export default function Search() {
 
     return (
         <div className="search">
-            <input type="text" placeholder="search Books..."  value={search} onChange={(e) => {setSearch(e.target.value)}} />
-            <button onClick = {() => searchBooks(search) }>Search</button>   
+            <input type="text" placeholder="Search for a book..."  value={search} onChange={(e) => {setSearch(e.target.value)}} />
+            <button onClick = {() => searchBooks(search) }><img src="https://img.icons8.com/ios-glyphs/50/000000/search.png"  width="20px" /></button>   
         </div>
     ) ;
 

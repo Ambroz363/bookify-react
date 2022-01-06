@@ -66,6 +66,7 @@ export default function App() {
             {<div className="main-area">
               <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/books" exact component={Home} />
               <Route path="/login" component={isLogged ? Home : Login} />
               <Route path="/signup" component={isLogged ? Home : Signup}/>
               <Route path="/book" component ={bookid ? Bookpage : Home} />
